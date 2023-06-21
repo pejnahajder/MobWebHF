@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="hu.bme.aut.android.recipebook.fragments.ListFragment"
+        android:label="Recipes"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_savedFragment"
+            app:destination="@id/savedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="hu.bme.aut.android.recipebook.fragments.addFragment"
+        android:label="Add Recipe"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="hu.bme.aut.android.recipebook.fragments.detailsFragment"
+        android:label="Recipe info"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <argument
+            android:name="currentItem"
+            app:argType="hu.bme.aut.android.recipebook.data.Recipe" />
+        <action
+            android:id="@+id/action_detailsFragment_to_savedFragment"
+            app:destination="@id/savedFragment" />
+        <argument
+            android:name="parentscreen"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="hu.bme.aut.android.recipebook.fragments.SavedFragment"
+        android:label="Saved Recipes"
+        tools:layout="@layout/fragment_saved" >
+        <action
+            android:id="@+id/action_savedFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_savedFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+</navigation>
